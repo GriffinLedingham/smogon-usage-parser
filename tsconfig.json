@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "removeComments": false,
+      "target": "es2017",
+      "module": "commonjs",
+      "outDir": "dist",
+      "inlineSourceMap": true,
+      "typeRoots": ["src/types", "./node_modules/@types"]
+    },
+    "files": ["./node_modules/@types/node/index.d.ts"],
+    "include": ["src/**/*.ts"],
+    "exclude": ["./node_modules", "./dist", "dist", "./dist/*"]
+}

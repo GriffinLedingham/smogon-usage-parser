@@ -1,0 +1,30 @@
+{
+  "all": true,
+  "cache": false,
+  "extension": [
+    ".ts",
+    ".tsx"
+  ],
+  "require": ["ts-node/register/transpile-only"],
+  "exclude": [
+    "src/test",
+    "static",
+    "dist/test",
+    "src/config",
+    "**/*.d.ts",
+    "coverage/**",
+    "packages/*/test/**",
+    "test/**",
+    "test{,-*}.ts",
+    "**/*{.,-}{test,spec}.ts",
+    "**/__tests__/**",
+    "**/node_modules/**"
+  ],
+  "reporter": [
+    "text-summary",
+    "text",
+    "html"
+  ],
+  "statements": 95,
+  "check-coverage": true
+}

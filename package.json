@@ -1,0 +1,49 @@
+{
+  "name": "smogon-usage-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "sup": "./dist/index.js",
+    "sup-parse": "./dist/index-parse.js"
+  },
+  "scripts": {
+    "build": "./node_modules/typescript/bin/tsc",
+    "dev": "./node_modules/typescript/bin/tsc --watch & nodemon dist",
+    "lint": "eslint src --ext ts",
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "test": "./node_modules/typescript/bin/tsc && ./node_modules/mocha/bin/mocha --opts .mocha.opts",
+    "coverage": "./node_modules/typescript/bin/tsc && ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha --opts .mocha.opts",
+    "report": "./node_modules/typescript/bin/tsc && ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha --opts .mocha.opts && open coverage/index.html",
+    "docker": "docker build -t br . && docker run -p 3000:3000 -p 3001:3001 br node dist",
+    "docker_test": "docker build -t br . && docker run -p 3000:3000 -p 3001:3001 br ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha --opts .mocha.opts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/args": "^3.0.0",
+    "@types/node": "^10.3.1",
+    "args": "^5.0.1",
+    "asciiparse": "^0.1.1",
+    "chai": "^4.1.2",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.6.0",
+    "nyc": "^14.1.1",
+    "prettier-eslint": "^9.0.0",
+    "ts-node": "^8.3.0",
+    "tsc": "^1.20150623.0+f2044a901165a2a97813772353b57dd9ed4796ca",
+    "typescript": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "mocha": "^6.1.4",
+    "tslint": "^5.10.0",
+    "typescript-eslint-parser": "^16.0.0"
+  }
+}
