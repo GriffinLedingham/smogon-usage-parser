@@ -18,7 +18,7 @@
     "docker_test": "docker build -t br . && docker run -p 3000:3000 -p 3001:3001 br ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha --opts .mocha.opts"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "@types/args": "^3.0.0",
     "@types/node": "^10.3.1",
