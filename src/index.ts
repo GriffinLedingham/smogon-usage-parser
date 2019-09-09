@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import * as args from 'args';
+import App from './App';
 
 args
   .command('parse', 'Parse Smogon usage stats data')
@@ -11,4 +12,6 @@ args
   .option('local', '(Optional) Parse local files instead of remote.');
 
 const flags = args.parse(process.argv);
-args.showHelp();
+
+const app = new App(flags);
+app.parse();

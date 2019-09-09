@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "sup": "./dist/index.js",
-    "sup-parse": "./dist/index-parse.js"
+    "sup": "./dist/index.js"
   },
   "scripts": {
     "build": "./node_modules/typescript/bin/tsc",
