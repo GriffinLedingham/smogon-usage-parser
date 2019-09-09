@@ -14,17 +14,24 @@ class Parser {
   public date: string;
   public format: string;
   public rating: number;
-  constructor(date: string, format: string, rating: number) {
+  public localDir: string;
+  constructor(date: string, format: string, rating: number, localDir: string) {
     this.date = date;
     this.format = format;
     this.rating = rating;
+    this.localDir = localDir;
   }
 
   public async fetch() {
-    const chaos = new Chaos(this.date, this.format, this.rating);
+    const chaos = new Chaos(this.date, this.format, this.rating, this.localDir);
     this.chaos = await chaos.fetch();
 
-    const ranking = new Ranking(this.date, this.format, this.rating);
+    const ranking = new Ranking(
+      this.date,
+      this.format,
+      this.rating,
+      this.localDir,
+    );
     this.ranking = await ranking.fetch();
   }
 

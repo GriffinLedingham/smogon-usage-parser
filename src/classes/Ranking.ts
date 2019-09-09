@@ -14,13 +14,20 @@ const formatData = (data: Array<{ [key: string]: any }>) => {
 
 class Ranking {
   public url: string;
+  public localDir: string;
   public data;
-  constructor(date: string, format: string, rating: number) {
+  constructor(date: string, format: string, rating: number, localDir?: string) {
     this.url = `${DataConfig.baseUrl}${date}/${format}-${rating}.txt`;
+    if (localDir !== undefined) {
+      this.localDir = `${localDir}${format}-${rating}.txt`;
+    }
   }
 
   public async fetch(): Promise<any> {
-    let body = await ajax(this.url, 'text');
+    let body;
+    if (this.localDir !== undefined) {
+      body = await file(this.localDir);
+    } else body = await ajax(this.url, 'text');
 
     const lines = body.split('\n');
     lines.splice(0, 2);
