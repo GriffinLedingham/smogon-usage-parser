@@ -85,10 +85,17 @@ class App {
           });
         }
         for (let j in pokemon.spreads) {
+          const evArr = pokemon.spreads[j].ev.split('/');
           csvSpreads.push({
             pokemon: pokemon.name,
             nature: pokemon.spreads[j].nature,
             ev: pokemon.spreads[j].ev,
+            hp: evArr[0],
+            atk: evArr[1],
+            def: evArr[2],
+            spa: evArr[3],
+            spd: evArr[4],
+            spe: evArr[5],
             percent: pokemon.spreads[j].percent,
           });
         }
