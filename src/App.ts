@@ -1,4 +1,5 @@
-import { promises as fs } from 'fs';
+import { promises as fs, writeFileSync } from 'fs';
+import { parse } from 'json2csv';
 
 import Chaos from './classes/Chaos';
 import Parser from './classes/Parser';
@@ -32,9 +33,99 @@ class App {
       } catch (e) {
         await fs.mkdir(`${this.output}${this.date}/`);
       }
+      try {
+        await fs.access(
+          `${this.output}${this.date}/${this.format}-${this.rating}`,
+        );
+      } catch (e) {
+        await fs.mkdir(
+          `${this.output}${this.date}/${this.format}-${this.rating}`,
+        );
+      }
+      const jsonOutput = JSON.stringify(output);
+      const csvRanking = [];
+      const csvMoves = [];
+      const csvItems = [];
+      const csvAbilities = [];
+      const csvTeam = [];
+      const csvSpreads = [];
+      for (let i in output) {
+        const pokemon = output[i];
+        csvRanking.push({
+          pokemon: pokemon.name,
+          ranking: pokemon.ranking,
+          percent: pokemon.percent,
+        });
+        for (let j in pokemon.moves) {
+          csvMoves.push({
+            pokemon: pokemon.name,
+            move: pokemon.moves[j].move,
+            percent: pokemon.moves[j].percent,
+          });
+        }
+        for (let j in pokemon.items) {
+          csvItems.push({
+            pokemon: pokemon.name,
+            item: pokemon.items[j].item,
+            percent: pokemon.items[j].percent,
+          });
+        }
+        for (let j in pokemon.abilities) {
+          csvAbilities.push({
+            pokemon: pokemon.name,
+            ability: pokemon.abilities[j].ability,
+            percent: pokemon.abilities[j].percent,
+          });
+        }
+        for (let j in pokemon.team) {
+          csvTeam.push({
+            pokemon: pokemon.name,
+            teammate: pokemon.team[j].pokemon,
+            percent: pokemon.team[j].percent,
+          });
+        }
+        for (let j in pokemon.spreads) {
+          csvSpreads.push({
+            pokemon: pokemon.name,
+            nature: pokemon.spreads[j].nature,
+            ev: pokemon.spreads[j].ev,
+            percent: pokemon.spreads[j].percent,
+          });
+        }
+      }
+      writeFileSync(
+        `${this.output}${this.date}/${this.format}-${this.rating}/usage.csv`,
+        parse(csvRanking),
+        'utf8',
+      );
+      writeFileSync(
+        `${this.output}${this.date}/${this.format}-${this.rating}/moves.csv`,
+        parse(csvMoves),
+        'utf8',
+      );
+      writeFileSync(
+        `${this.output}${this.date}/${this.format}-${this.rating}/items.csv`,
+        parse(csvItems),
+        'utf8',
+      );
+      writeFileSync(
+        `${this.output}${this.date}/${this.format}-${this.rating}/abilities.csv`,
+        parse(csvAbilities),
+        'utf8',
+      );
+      writeFileSync(
+        `${this.output}${this.date}/${this.format}-${this.rating}/team.csv`,
+        parse(csvTeam),
+        'utf8',
+      );
+      writeFileSync(
+        `${this.output}${this.date}/${this.format}-${this.rating}/spreads.csv`,
+        parse(csvSpreads),
+        'utf8',
+      );
       fs.writeFile(
-        `${this.output}${this.date}/${this.format}-${this.rating}.json`,
-        JSON.stringify(output),
+        `${this.output}${this.date}/${this.format}-${this.rating}/usage.json`,
+        jsonOutput,
         'utf8',
       ).then(() => {
         resolve();

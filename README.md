@@ -4,28 +4,28 @@ A Node CLI [Smogon Usage Stats](https://www.smogon.com/stats) parser built in Ty
 
 ## Requirements
 
-* Node 10.16.3+
+- Node 10.16.3+
 
 ## Setup
 
-* `npm install`
-* `npm link`
+- `npm install`
+- `npm link`
 
 ## Usage
 
-* `sup -f <format> -d <date> -r <rating> -o <output directory> [-l <local>]`
+- `sup -f <format> -d <date> -r <rating> -o <output directory> [-l <local>]`
 
-`format` should be formatted as `gen7vgc2017`, `date` as `2017-10`, `rating` as `1760`,  `output` as `./data`. 
+`format` should be formatted as `gen7vgc2017`, `date` as `2017-10`, `rating` as `1760`, `output` as `./data`.
 
 The `-l` flag will force the parser to utilize local data, instead of fetching from the Smogon servers. This should reference the directory where the chaos .json & .txt files to parse reside.
 
 ## Example
 
-* `sup -d 2019-08 -f gen7vgc2019ultraseries -r 1760 -o ./`
+- `sup -d 2019-08 -f gen7vgc2019ultraseries -r 1760 -o ./`
 
 ## Output
 
-When Smogon Usage Parser finishes a run, it will output a .json file to specified output directory. The output data will be in the following format:
+When Smogon Usage Parser finishes a run, it will output a .json file to specified output directory, along with CSV's for items, abilities, moves, etc. The output JSON data will be in the following format:
 
 ```json
 [
