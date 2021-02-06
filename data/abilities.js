@@ -6032,6 +6032,82 @@ let BattleAbilities = {
     rating: 3,
     num: 259,
   },
+  dragonsmaw: {
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === 'Dragon') {
+        this.debug("Dragon's Maw boost");
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === 'Dragon') {
+        this.debug("Dragon's Maw boost");
+        return this.chainModify(1.5);
+      }
+    },
+    name: "Dragon's Maw",
+    rating: 3.5,
+    num: 263,
+  },
+  grimneigh: {
+    onSourceAfterFaint(length, target, source, effect) {
+      if (effect && effect.effectType === 'Move') {
+        this.boost({ spa: length }, source);
+      }
+    },
+    name: 'Grim Neigh',
+    rating: 3,
+    num: 265,
+  },
+  transistor: {
+    onModifyAtkPriority: 5,
+    onModifyAtk(atk, attacker, defender, move) {
+      if (move.type === 'Electric') {
+        this.debug('Transistor boost');
+        return this.chainModify(1.5);
+      }
+    },
+    onModifySpAPriority: 5,
+    onModifySpA(atk, attacker, defender, move) {
+      if (move.type === 'Electric') {
+        this.debug('Transistor boost');
+        return this.chainModify(1.5);
+      }
+    },
+    name: 'Transistor',
+    rating: 3.5,
+    num: 262,
+  },
+  curiousmedicine: {
+    onStart(pokemon) {
+      for (const ally of pokemon.side.active) {
+        if (ally !== pokemon) {
+          ally.clearBoosts();
+          this.add(
+            '-clearboost',
+            ally,
+            '[from] ability: Curious Medicine',
+            '[of] ' + pokemon,
+          );
+        }
+      }
+    },
+    name: 'Curious Medicine',
+    rating: 0,
+    num: 261,
+  },
+  chillingneigh: {
+    onSourceAfterFaint(length, target, source, effect) {
+      if (effect && effect.effectType === 'Move') {
+        this.boost({ atk: length }, source);
+      }
+    },
+    name: 'Chilling Neigh',
+    rating: 3,
+    num: 264,
+  },
 };
 
 exports.BattleAbilities = BattleAbilities;
