@@ -55,6 +55,12 @@ class App {
           pokemon: pokemon.name,
           ranking: pokemon.ranking,
           percent: pokemon.percent,
+          hp: pokemon.stats.hp,
+          atk: pokemon.stats.atk,
+          def: pokemon.stats.def,
+          spa: pokemon.stats.spa,
+          spd: pokemon.stats.spd,
+          spe: pokemon.stats.spe,
         });
         for (let j in pokemon.moves) {
           csvMoves.push({

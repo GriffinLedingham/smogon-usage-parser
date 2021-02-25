@@ -1,6 +1,6 @@
 # Smogon Usage Parser
 
-A Node CLI [Smogon Usage Stats](https://www.smogon.com/stats) parser built in TypeScript, which outputs Usage Stats data in the format required for the [Pikalytics](https://www.pikalytics.com) API.
+A Node CLI [Smogon Usage Stats](https://www.smogon.com/stats) parser built in TypeScript, which outputs Usage Stats data in the format required for the [Pikalytics](https://www.pikalytics.com) API. Use this parser as you please, credit is always appreciated if this parser is used in any cool projects!
 
 ## Requirements
 

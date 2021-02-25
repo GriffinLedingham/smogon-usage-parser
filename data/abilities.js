@@ -6108,6 +6108,38 @@ let BattleAbilities = {
     rating: 3,
     num: 264,
   },
+  asoneglastrier: {
+		onPreStart(pokemon) {
+			this.add('-ability', pokemon, 'As One');
+			this.add('-ability', pokemon, 'Unnerve', pokemon.side.foe);
+		},
+		onFoeTryEatItem: false,
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({atk: length}, source, source, this.dex.getAbility('chillingneigh'));
+			}
+		},
+		isPermanent: true,
+		name: "As One (Glastrier)",
+		rating: 3.5,
+		num: 266,
+	},
+	asonespectrier: {
+		onPreStart(pokemon) {
+			this.add('-ability', pokemon, 'As One');
+			this.add('-ability', pokemon, 'Unnerve', pokemon.side.foe);
+		},
+		onFoeTryEatItem: false,
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({spa: length}, source, source, this.dex.getAbility('grimneigh'));
+			}
+		},
+		isPermanent: true,
+		name: "As One (Spectrier)",
+		rating: 3.5,
+		num: 267,
+	},
 };
 
 exports.BattleAbilities = BattleAbilities;
