@@ -9,11 +9,11 @@ A Node CLI [Smogon Usage Stats](https://www.smogon.com/stats) parser built in Ty
 ## Setup
 
 - `npm install`
-- `npm link`
+- `npm run tsc`
 
 ## Usage
 
-- `sup -f <format> -d <date> -r <rating> -o <output directory> [-l <local>]`
+- `node dist/index.js -f <format> -d <date> -r <rating> -o <output directory> [-l <local>]`
 
 `format` should be formatted as `gen7vgc2017`, `date` as `2017-10`, `rating` as `1760`, `output` as `./data`.
 
@@ -21,7 +21,7 @@ The `-l` flag will force the parser to utilize local data, instead of fetching f
 
 ## Example
 
-- `sup -d 2019-08 -f gen7vgc2019ultraseries -r 1760 -o ./`
+- `node dist/index.js -d 2019-08 -f gen7vgc2019ultraseries -r 1760 -o ./`
 
 ## Output
 
