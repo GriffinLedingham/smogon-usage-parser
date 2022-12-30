@@ -42,7 +42,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "tslint": "^5.10.0",
     "typescript-eslint-parser": "^16.0.0"
   }
